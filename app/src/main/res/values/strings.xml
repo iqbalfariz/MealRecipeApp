@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MealRecipeApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="menu_favorite">Favorite</string>
+
+    <string-array name="typeCategory">
+        <item>None</item>
+        <item>Type Food</item>
+        <item>Area</item>
+    </string-array>
 </resources>

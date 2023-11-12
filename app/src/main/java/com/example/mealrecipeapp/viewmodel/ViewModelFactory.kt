@@ -12,6 +12,8 @@ class ViewModelFactory (private val repository: MealRecipeRepository): ViewModel
             return MainViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)){
             return DetailViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)){
+            return FavoriteViewModel(repository) as T
         }
         throw IllegalArgumentException("ViewModel Not Found")
     }

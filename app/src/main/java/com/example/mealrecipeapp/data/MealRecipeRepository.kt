@@ -12,13 +12,19 @@ import com.example.mealrecipeapp.data.remote.response.MealByCategoryResponse
 class MealRecipeRepository(private val mealDao: MealDao) {
 
     private val apiService: ApiService = ApiConfig.apiService
+
+    val allFavoriteRecipe: LiveData<List<MealEntity>> = mealDao.getFavoriteMealRecipe()
     suspend fun getTypeCategoryMeals(typeCategory: String) = apiService.getTypeCategoryMeals(typeCategory)
 
     suspend fun getDetailsById(id: String) = apiService.getDetailsById(id)
 
-    suspend fun getFavoriteRecipe(){
-        mealDao.getFavoriteMealRecipe()
-    }
+    suspend fun getDataByName(name: String) = apiService.getDataByName(name)
+
+    suspend fun getListTypeFood() = apiService.getListTypeFood("list")
+
+    suspend fun getListArea() = apiService.getListArea("list")
+
+    suspend fun getTypeAreaMeals(typeArea: String) = apiService.getAreaCategoryMeals(typeArea)
 
     suspend fun insertFavoriteRecipe(mealEntity: MealEntity){
         mealDao.insertMealData(mealEntity)
