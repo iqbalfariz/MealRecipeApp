@@ -10,6 +10,8 @@ class ViewModelFactory (private val repository: MealRecipeRepository): ViewModel
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)){
             return MainViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)){
+            return DetailViewModel(repository) as T
         }
         throw IllegalArgumentException("ViewModel Not Found")
     }
