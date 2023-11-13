@@ -2,6 +2,7 @@ package com.example.mealrecipeapp.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
@@ -47,22 +48,18 @@ class DetailActivity : AppCompatActivity() {
                 .load(item.strMealThumb)
                 .into(binding.ivMealThumb)
             binding.tvInstructions.text = item.strInstructions
+            binding.tvDescription.text = item.strMeal
+            binding.tvIngredients1.text = item.strIngredient1
+            binding.tvIngredients2.text = item.strIngredient2
+            binding.tvIngredients3.text = item.strIngredient3
         }
 
         binding.fabFavorite.setOnClickListener {
             insertMealData(dataMeals)
         }
     }
-    
-//    fun MealByCategoryResponse.toMealEntity(): MealEntity {
-//        return MealEntity(
-//            id = this.idMeal,
-//            strMeal = this.strMeal,
-//            strMealThumb = this.strMealThumb
-//        )
-//    }
 
-    fun insertMealData(mealCategories: MealByCategoryResponse?) {
+    private fun insertMealData(mealCategories: MealByCategoryResponse?) {
         if (mealCategories != null){
             val mealEntity = MealEntity(
                 id = mealCategories.idMeal,
@@ -71,6 +68,7 @@ class DetailActivity : AppCompatActivity() {
             )
             lifecycleScope.launch {
                 detailViewModel.insertFavoriteRecipe(mealEntity)
+                Toast.makeText(this@DetailActivity, "Meal Recipe Berhasil Disimpan", Toast.LENGTH_SHORT).show()
             }
         }
     }

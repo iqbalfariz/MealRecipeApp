@@ -13,45 +13,53 @@
         android:layout_margin="10dp"
         >
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:id="@+id/ilFilterTypeCategory"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/llFilter"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Category"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            >
-            <AutoCompleteTextView
-                android:id="@+id/typeCategoryList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="None"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:id="@+id/ilFilterListResultCategory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Filter by ..."
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
             >
-            <AutoCompleteTextView
-                android:id="@+id/typeFilterList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="None"
-                />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:id="@+id/ilFilterTypeCategory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Category"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                >
+                <AutoCompleteTextView
+                    android:id="@+id/typeCategoryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:id="@+id/ilFilterListResultCategory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Filter by ..."
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                >
+                <AutoCompleteTextView
+                    android:id="@+id/typeFilterList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvSearchView"
@@ -62,7 +70,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ilFilterTypeCategory"
+            app:layout_constraintTop_toBottomOf="@id/llFilter"
             app:layout_constraintHorizontal_bias="0.5"
             >
 
@@ -81,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
+            tools:listitem="@layout/meal_list_item"
             app:layout_constraintTop_toBottomOf="@id/cvSearchView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
